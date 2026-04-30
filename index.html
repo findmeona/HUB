@@ -2,19 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Working Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Next Level Animations</title>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- Loader -->
+<div id="loader">
+  <h1>Loading...</h1>
+</div>
+
+<header>
+  <h1 class="logo">MyBrand</h1>
+</header>
+
 <section class="hero">
-  <h1>It Works ✅</h1>
-  <p>Your website is now visible</p>
+  <h2 class="reveal">Next-Level Experience</h2>
+  <p class="reveal">Smooth. Animated. Premium.</p>
 </section>
 
-<section class="section">
-  <h2>Scroll Down</h2>
+<section class="parallax">
+  <h2>Scroll Magic</h2>
 </section>
 
+<section class="cards">
+  <div class="card">Design</div>
+  <div class="card">Development</div>
+  <div class="card">Branding</div>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
