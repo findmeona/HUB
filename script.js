@@ -1,46 +1,21 @@
-// Register plugin
-gsap.registerPlugin(ScrollTrigger);
+// Simple animation on scroll
+const cards = document.querySelectorAll(".card");
 
-// Loader animation
-gsap.to("#loader", {
-  y: "-100%",
-  duration: 1.5,
-  delay: 1
-});
+window.addEventListener("scroll", () => {
+  cards.forEach(card => {
+    const position = card.getBoundingClientRect().top;
+    const screen = window.innerHeight;
 
-// Text reveal animation
-gsap.from(".reveal", {
-  y: 100,
-  opacity: 0,
-  duration: 1,
-  stagger: 0.3
-});
-
-// Parallax effect
-gsap.to(".parallax", {
-  backgroundPosition: "50% 100%",
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".parallax",
-    scrub: true
-  }
-});
-
-// Cards animation
-gsap.from(".card", {
-  scrollTrigger: {
-    trigger: ".cards",
-    start: "top 80%"
-  },
-  y: 100,
-  opacity: 0,
-  stagger: 0.2
-});
-
-// Mouse movement effect
-document.addEventListener("mousemove", (e) => {
-  gsap.to(".hero", {
-    x: (e.clientX - window.innerWidth / 2) * 0.02,
-    y: (e.clientY - window.innerHeight / 2) * 0.02
+    if (position < screen - 50) {
+      card.style.opacity = 1;
+      card.style.transform = "translateY(0)";
+    }
   });
+});
+
+// Initial state
+cards.forEach(card => {
+  card.style.opacity = 0;
+  card.style.transform = "translateY(50px)";
+  card.style.transition = "0.5s";
 });
