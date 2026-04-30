@@ -1,65 +1,85 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  background: #0a0a0a;
-  color: white;
+  margin: 0;
   font-family: Arial, sans-serif;
-  overflow-x: hidden;
+  background: #fffaf0;
+  color: #333;
 }
 
-/* Loader */
-#loader {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+/* Header */
+header {
+  text-align: center;
+  padding: 20px;
+  background: #7c3aed;
+  color: white;
 }
 
 /* Hero */
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #f59e0b, #ef4444);
+  color: white;
 }
 
-.hero h2 {
-  font-size: 3rem;
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: white;
+  color: #333;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: 0.3s;
 }
 
-/* Parallax */
-.parallax {
-  height: 100vh;
-  background: url('https://picsum.photos/1600/900') no-repeat center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.btn:hover {
+  background: #333;
+  color: white;
 }
 
-/* Cards */
+/* Services */
+.services {
+  padding: 50px;
+  text-align: center;
+}
+
 .cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 100px;
 }
 
 .card {
-  padding: 40px;
-  background: #111;
+  background: #f3f4f6;
+  padding: 20px 30px;
+  border-radius: 10px;
   transition: 0.3s;
 }
 
 .card:hover {
+  background: #7c3aed;
+  color: white;
   transform: scale(1.1);
+}
+
+/* About */
+.about {
+  padding: 50px;
+  text-align: center;
+  background: #fef3c7;
+}
+
+/* Contact */
+.contact {
+  padding: 50px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #111;
+  color: white;
 }
