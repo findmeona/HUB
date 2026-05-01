@@ -1,16 +1,12 @@
-// IMAGE POPUP
-const images = document.querySelectorAll(".gallery-img");
-const popup = document.getElementById("popup");
-const popupImg = document.getElementById("popup-img");
-const closeBtn = document.getElementById("close");
+// SCROLL ANIMATION
+const boxes = document.querySelectorAll(".img-box");
 
-images.forEach(img => {
-  img.addEventListener("click", () => {
-    popup.style.display = "flex";
-    popupImg.src = img.src;
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
   });
 });
 
-closeBtn.onclick = () => popup.style.display = "none";
-
-popup.onclick = () => popup.style.display = "none";
+boxes.forEach(box => observer.observe(box));
