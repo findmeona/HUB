@@ -1,81 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RV Creation | Luxury Wedding Decor</title>
-
+<title>RV Creation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <h2>RV Creation</h2>
-  <a href="https://wa.me/919913542816" class="nav-btn">Book Now</a>
+<!-- NAV -->
+<header class="nav">
+  <div class="logo">RV Creation</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <video autoplay muted loop class="bg-video">
-    <source src="https://cdn.coverr.co/videos/coverr-wedding-decor-8574/1080p.mp4">
-  </video>
-  <div class="overlay"></div>
+<!-- HERO STORY SECTION -->
+<section class="panel hero">
+  <h1 class="anim">We Design Unforgettable Events</h1>
+  <p class="anim">Apple-level experience. Stripe-level clarity.</p>
+</section>
 
-  <div class="hero-content">
-    <h1>Royal Wedding Decoration</h1>
-    <p>Luxury • Tradition • Elegance</p>
-    <a href="#" class="btn">Get Quote</a>
+<!-- STORY 1 -->
+<section class="panel dark">
+  <div class="split">
+    <div class="text anim">
+      <h2>Elegant Traditional Design</h2>
+      <p>We combine culture with modern aesthetics.</p>
+    </div>
+    <div class="box anim"></div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery">
-  <h2>Our Work</h2>
-
-  <div class="gallery-grid">
-
-    <div class="img-box">
-      <img src="https://images.unsplash.com/photo-1519167758481-83f29c6a7c1d?w=800">
-      <div class="overlay-text">Royal Mandap Setup</div>
+<!-- STORY 2 -->
+<section class="panel">
+  <div class="split reverse">
+    <div class="text anim">
+      <h2>Premium Event Experience</h2>
+      <p>Every detail is crafted with precision.</p>
     </div>
-
-    <div class="img-box">
-      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800">
-      <div class="overlay-text">Traditional Wedding Decor</div>
-    </div>
-
-    <div class="img-box">
-      <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800">
-      <div class="overlay-text">Luxury Stage Design</div>
-    </div>
-
-    <div class="img-box">
-      <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800">
-      <div class="overlay-text">Floral Decoration</div>
-    </div>
-
-    <div class="img-box">
-      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800">
-      <div class="overlay-text">Wedding Lights</div>
-    </div>
-
-    <div class="img-box">
-      <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=800">
-      <div class="overlay-text">Grand Entrance Setup</div>
-    </div>
-
+    <div class="box anim"></div>
   </div>
 </section>
 
-<footer>
-  <p>© 2026 RV Creation</p>
-</footer>
+<!-- STORY 3 -->
+<section class="panel dark center">
+  <h2 class="anim">Let’s Build Your Event</h2>
+  <button class="btn">Get Started</button>
+</section>
 
 <script src="script.js"></script>
-
 </body>
 </html>
+<section class="panel">
+  <h1>Our Services</h1>
+  <p>Wedding • Decoration • Planning • Design</p>
+</section>
+<section class="panel dark">
+  <h1>Our Work</h1>
+  <p>Luxury Events • Stage Design • Traditional Sets</p>
+</section>
