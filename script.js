@@ -35,3 +35,6 @@ setInterval(() => {
   index = (index + 1) % total;
   updateSlider();
 }, 4000);
+document.querySelectorAll(".slides img").forEach(img => {
+  img.onload = () => img.classList.add("loaded");
+});
