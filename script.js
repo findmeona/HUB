@@ -1,40 +1,16 @@
-//// SCROLL ANIMATION
-const cards = document.querySelectorAll(".card");
+// IMAGE POPUP
+const images = document.querySelectorAll(".gallery-img");
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popup-img");
+const closeBtn = document.getElementById("close");
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    popup.style.display = "flex";
+    popupImg.src = img.src;
   });
 });
 
-cards.forEach(card => observer.observe(card));
+closeBtn.onclick = () => popup.style.display = "none";
 
-//// SLIDER
-let index = 0;
-const slides = document.querySelector(".slides");
-const total = document.querySelectorAll(".slides img").length;
-
-document.querySelector(".next").onclick = () => {
-  index = (index + 1) % total;
-  updateSlider();
-};
-
-document.querySelector(".prev").onclick = () => {
-  index = (index - 1 + total) % total;
-  updateSlider();
-};
-
-function updateSlider(){
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}
-
-// AUTO SLIDE
-setInterval(() => {
-  index = (index + 1) % total;
-  updateSlider();
-}, 4000);
-document.querySelectorAll(".slides img").forEach(img => {
-  img.onload = () => img.classList.add("loaded");
-});
+popup.onclick = () => popup.style.display = "none";
