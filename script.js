@@ -1,20 +1,24 @@
 /* ===================================================
-   RV CREATION – script.js
+   RV CREATION – script.js (ENHANCED)
    Features:
-   - Sticky navbar scroll effect
-   - Mobile hamburger menu
-   - Scroll reveal animations
+   - Sticky navbar scroll effect + backdrop blur
+   - Animated hamburger menu (→ X transform)
+   - Scroll reveal (up, left, right) with IntersectionObserver
+   - Typing effect for hero headline
    - Counter animation for stats
    - Contact form with WhatsApp redirect
    - Active nav link on scroll
+   - Particle canvas (subtle golden particles)
+   - Smooth scroll for anchor links
+   - Gallery lightbox
 =================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ================================================
-     1. NAVBAR – scroll shadow + active state
+     1. NAVBAR – scroll shadow + backdrop blur
   ================================================ */
-  const navbar = document.getElementById('navbar');
+  var navbar = document.getElementById('navbar');
 
   function handleScroll() {
     if (window.scrollY > 40) {
@@ -29,76 +33,113 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* ================================================
-     2. HAMBURGER MENU
+     2. HAMBURGER MENU (with X animation)
   ================================================ */
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
+  var hamburger = document.getElementById('hamburger');
+  var navLinks  = document.getElementById('navLinks');
 
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', function () {
       navLinks.classList.toggle('open');
-      const isOpen = navLinks.classList.contains('open');
+      hamburger.classList.toggle('active');
+      var isOpen = navLinks.classList.contains('open');
       hamburger.setAttribute('aria-expanded', isOpen);
     });
 
-    // Close menu when any nav link is clicked
     navLinks.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
       });
     });
   }
 
 
   /* ================================================
-     3. SCROLL REVEAL
+     3. SCROLL REVEAL (multi-direction)
   ================================================ */
-  const revealElements = document.querySelectorAll('.reveal');
+  var allReveal = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale');
 
-  const revealObserver = new IntersectionObserver(
+  var revealObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+  );
+
+  allReveal.forEach(function (el) {
+    revealObserver.observe(el);
+  });
+
+  /* Also keep old .reveal class support */
+  var oldReveal = document.querySelectorAll('.reveal');
+  var oldObserver = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
+          oldObserver.unobserve(entry.target);
         }
       });
     },
     { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
   );
-
-  revealElements.forEach(function (el) {
-    revealObserver.observe(el);
-  });
-   // OPEN LIGHTBOX
-function openLightbox(imgSrc) {
-  const lightbox = document.getElementById("lightbox");
-  const img = document.getElementById("lightbox-img");
-
-  img.src = imgSrc;
-  lightbox.style.display = "flex";
-}
-
-// CLOSE LIGHTBOX
-function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
-}
-
-// CLICK OUTSIDE IMAGE TO CLOSE
-document.addEventListener("click", function(e) {
-  const lightbox = document.getElementById("lightbox");
-  if (e.target === lightbox) {
-    closeLightbox();
-  }
-});
+  oldReveal.forEach(function (el) { oldObserver.observe(el); });
 
 
   /* ================================================
-     4. COUNTER ANIMATION
+     4. TYPING EFFECT – Hero Heading Line 3
   ================================================ */
-  const statNums = document.querySelectorAll('.stat-num[data-target]');
+  var typingEl = document.getElementById('typingText');
+  var phrases  = ['Truly Magical', 'Truly Elegant', 'Truly Special', 'Truly Yours'];
+  var phraseIndex = 0;
+  var charIndex   = 0;
+  var isDeleting  = false;
+  var typingDelay = 110;
 
-  const counterObserver = new IntersectionObserver(
+  function typeWriter() {
+    if (!typingEl) return;
+
+    var current = phrases[phraseIndex];
+
+    if (isDeleting) {
+      typingEl.textContent = current.slice(0, charIndex - 1);
+      charIndex--;
+      typingDelay = 60;
+    } else {
+      typingEl.textContent = current.slice(0, charIndex + 1);
+      charIndex++;
+      typingDelay = 110;
+    }
+
+    if (!isDeleting && charIndex === current.length) {
+      // Pause at full word
+      typingDelay = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typingDelay = 400;
+    }
+
+    setTimeout(typeWriter, typingDelay);
+  }
+
+  // Start typing after hero lines animate in
+  setTimeout(typeWriter, 1200);
+
+
+  /* ================================================
+     5. COUNTER ANIMATION
+  ================================================ */
+  var statNums = document.querySelectorAll('.stat-num[data-target]');
+
+  var counterObserver = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -110,9 +151,7 @@ document.addEventListener("click", function(e) {
     { threshold: 0.5 }
   );
 
-  statNums.forEach(function (el) {
-    counterObserver.observe(el);
-  });
+  statNums.forEach(function (el) { counterObserver.observe(el); });
 
   function animateCounter(el) {
     var target   = parseInt(el.getAttribute('data-target'), 10);
@@ -122,7 +161,7 @@ document.addEventListener("click", function(e) {
     function step(timestamp) {
       if (!start) start = timestamp;
       var progress = Math.min((timestamp - start) / duration, 1);
-      var eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      var eased    = 1 - Math.pow(1 - progress, 3);
       el.textContent = Math.floor(eased * target);
       if (progress < 1) {
         requestAnimationFrame(step);
@@ -130,13 +169,12 @@ document.addEventListener("click", function(e) {
         el.textContent = target;
       }
     }
-
     requestAnimationFrame(step);
   }
 
 
   /* ================================================
-     5. ACTIVE NAV LINK ON SCROLL
+     6. ACTIVE NAV LINK ON SCROLL
   ================================================ */
   var sections = document.querySelectorAll('section[id], .hero[id]');
 
@@ -160,7 +198,7 @@ document.addEventListener("click", function(e) {
 
 
   /* ================================================
-     6. CONTACT FORM – WhatsApp redirect
+     7. CONTACT FORM – WhatsApp redirect
   ================================================ */
   var bookingForm = document.getElementById('bookingForm');
 
@@ -174,50 +212,27 @@ document.addEventListener("click", function(e) {
       var date    = document.getElementById('fdate').value;
       var message = document.getElementById('fmsg').value.trim();
 
-      // Basic validation
-      if (!name) {
-        showError('fname', 'Please enter your name.');
-        return;
-      }
-      if (!phone) {
-        showError('fphone', 'Please enter your phone number.');
-        return;
-      }
-      if (!service) {
-        showError('fservice', 'Please select a service.');
-        return;
-      }
+      if (!name)    { showError('fname',    'Please enter your name.');       return; }
+      if (!phone)   { showError('fphone',   'Please enter your phone number.'); return; }
+      if (!service) { showError('fservice', 'Please select a service.');      return; }
 
-      // Build WhatsApp message
-      var waMessage = 'Hello RV Creation! 🙏\n\n';
-      waMessage += '*Name:* ' + name + '\n';
-      waMessage += '*Phone:* ' + phone + '\n';
+      var waMessage  = 'Hello RV Creation! 🙏\n\n';
+      waMessage += '*Name:* '    + name    + '\n';
+      waMessage += '*Phone:* '   + phone   + '\n';
       waMessage += '*Service:* ' + service + '\n';
-      if (date) {
-        var formatted = formatDate(date);
-        waMessage += '*Event Date:* ' + formatted + '\n';
-      }
-      if (message) {
-        waMessage += '*Message:* ' + message + '\n';
-      }
+      if (date)    { waMessage += '*Event Date:* ' + formatDate(date) + '\n'; }
+      if (message) { waMessage += '*Message:* '    + message + '\n'; }
       waMessage += '\nI would like to know more about your decoration services.';
 
-      var encoded = encodeURIComponent(waMessage);
-      var waURL   = 'https://wa.me/919913542816?text=' + encoded;
+      var waURL = 'https://wa.me/919913542816?text=' + encodeURIComponent(waMessage);
 
-      // Show success message
       var successEl = document.getElementById('formSuccess');
       if (successEl) {
         successEl.style.display = 'block';
         successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
 
-      // Open WhatsApp after brief delay
-      setTimeout(function () {
-        window.open(waURL, '_blank');
-      }, 600);
-
-      // Reset form after 3s
+      setTimeout(function () { window.open(waURL, '_blank'); }, 600);
       setTimeout(function () {
         bookingForm.reset();
         if (successEl) successEl.style.display = 'none';
@@ -229,12 +244,12 @@ document.addEventListener("click", function(e) {
     var field = document.getElementById(fieldId);
     if (!field) return;
     field.style.borderColor = '#E24B4A';
+    field.style.boxShadow   = '0 0 0 3px rgba(226,75,74,0.12)';
     field.focus();
-    // Remove error style on next input
     field.addEventListener('input', function () {
       field.style.borderColor = '';
+      field.style.boxShadow   = '';
     }, { once: true });
-    // Optional: alert fallback
     alert(msg);
   }
 
@@ -247,7 +262,7 @@ document.addEventListener("click", function(e) {
 
 
   /* ================================================
-     7. SMOOTH SCROLL FOR ANCHOR LINKS
+     8. SMOOTH SCROLL FOR ANCHOR LINKS
   ================================================ */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
@@ -256,7 +271,7 @@ document.addEventListener("click", function(e) {
       var target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
-        var offset = 70; // navbar height
+        var offset    = 70;
         var targetPos = target.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: targetPos, behavior: 'smooth' });
       }
@@ -265,10 +280,158 @@ document.addEventListener("click", function(e) {
 
 
   /* ================================================
-     8. GALLERY – replace placeholders with images
-     To add real photos:
-     Replace the .gallery-placeholder div with:
-     <img src="images/your-photo.jpg" alt="Event description" />
+     9. GALLERY LIGHTBOX
   ================================================ */
+  window.openLightbox = function (imgSrc) {
+    var lightbox = document.getElementById('lightbox');
+    var img      = document.getElementById('lightbox-img');
+    if (!lightbox || !img) return;
+    img.src = imgSrc;
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeLightbox = function () {
+    var lightbox = document.getElementById('lightbox');
+    if (lightbox) lightbox.style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  // Close on backdrop click
+  var lightboxEl = document.getElementById('lightbox');
+  if (lightboxEl) {
+    lightboxEl.addEventListener('click', function (e) {
+      if (e.target === lightboxEl) window.closeLightbox();
+    });
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') window.closeLightbox();
+  });
+
+
+  /* ================================================
+     10. PARTICLE CANVAS – Subtle golden sparkles
+  ================================================ */
+  var canvas = document.getElementById('particleCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas, { passive: true });
+
+  // Only show particles in the hero viewport region
+  var PARTICLE_COUNT = 38;
+  var particles = [];
+
+  function randomBetween(a, b) {
+    return a + Math.random() * (b - a);
+  }
+
+  function createParticle() {
+    return {
+      x:       randomBetween(0, canvas.width),
+      y:       randomBetween(0, canvas.height * 0.85),
+      r:       randomBetween(0.6, 2.2),
+      alpha:   randomBetween(0.15, 0.55),
+      vx:      randomBetween(-0.18, 0.18),
+      vy:      randomBetween(-0.35, -0.08),
+      fadeDir: Math.random() > 0.5 ? 1 : -1,
+      fadeSpd: randomBetween(0.003, 0.008)
+    };
+  }
+
+  for (var i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push(createParticle());
+  }
+
+  // Gold color #C9922A split as rgb 201,146,42
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(function (p) {
+      // Fade in/out
+      p.alpha += p.fadeDir * p.fadeSpd;
+      if (p.alpha >= 0.55) { p.fadeDir = -1; }
+      if (p.alpha <= 0.06) { p.fadeDir = 1; }
+
+      // Move
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Reset when out of bounds
+      if (p.y < -10) {
+        p.y = canvas.height * 0.9;
+        p.x = randomBetween(0, canvas.width);
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(201, 146, 42, ' + p.alpha + ')';
+      ctx.fill();
+    });
+
+    requestAnimationFrame(drawParticles);
+  }
+
+  drawParticles();
+
+  /* ================================================
+     11. SERVICE CARDS – Stagger entrance
+  ================================================ */
+  var serviceCards = document.querySelectorAll('.service-card');
+  serviceCards.forEach(function (card, idx) {
+    card.style.transitionDelay = (idx * 0.08) + 's';
+  });
+
+  /* ================================================
+     12. GALLERY ITEMS – Stagger entrance
+  ================================================ */
+  var galleryItems = document.querySelectorAll('.gallery-item');
+  galleryItems.forEach(function (item, idx) {
+    item.style.transitionDelay = (idx * 0.06) + 's';
+  });
+
+  /* ================================================
+     13. STAT CARDS – pop on hover (handled in CSS)
+         Extra: add sparkle ripple on click
+  ================================================ */
+  document.querySelectorAll('.stat-card').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      var ripple = document.createElement('span');
+      ripple.style.cssText = [
+        'position:absolute',
+        'border-radius:50%',
+        'background:rgba(201,146,42,0.25)',
+        'pointer-events:none',
+        'transform:scale(0)',
+        'animation:rippleAnim 0.55s ease-out forwards',
+        'width:80px',
+        'height:80px',
+        'top:50%',
+        'left:50%',
+        'margin-top:-40px',
+        'margin-left:-40px'
+      ].join(';');
+
+      // Inject ripple keyframes once
+      if (!document.getElementById('ripple-style')) {
+        var st = document.createElement('style');
+        st.id = 'ripple-style';
+        st.textContent = '@keyframes rippleAnim { to { transform: scale(2.5); opacity: 0; } }';
+        document.head.appendChild(st);
+      }
+
+      card.style.position = 'relative';
+      card.style.overflow  = 'hidden';
+      card.appendChild(ripple);
+      setTimeout(function () { ripple.remove(); }, 560);
+    });
+  });
 
 }); // end DOMContentLoaded
