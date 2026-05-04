@@ -70,6 +70,27 @@ document.addEventListener('DOMContentLoaded', function () {
   revealElements.forEach(function (el) {
     revealObserver.observe(el);
   });
+   // OPEN LIGHTBOX
+function openLightbox(imgSrc) {
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+
+  img.src = imgSrc;
+  lightbox.style.display = "flex";
+}
+
+// CLOSE LIGHTBOX
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+// CLICK OUTSIDE IMAGE TO CLOSE
+document.addEventListener("click", function(e) {
+  const lightbox = document.getElementById("lightbox");
+  if (e.target === lightbox) {
+    closeLightbox();
+  }
+});
 
 
   /* ================================================
