@@ -44,6 +44,9 @@
 </head>
 <body>
 
+  <!-- ===== PARTICLE CANVAS ===== -->
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
@@ -68,20 +71,31 @@
   <section class="hero" id="home">
     <div class="hero-pattern"></div>
     <div class="hero-border"></div>
-    <div class="hero-content fade-in">
-      <div class="hero-badge">✦ Rajkot's Trusted Decoration Service ✦</div>
-      <h1>Every Moment<br>Deserves to be<br><em>Truly Magical</em></h1>
-      <p class="hero-sub">
+    <!-- Floating petals -->
+    <div class="petals-container" aria-hidden="true">
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge animate-badge">✦ Rajkot's Trusted Decoration Service ✦</div>
+      <h1 class="hero-title">
+        <span class="hero-line-1">Every Moment</span>
+        <span class="hero-line-2">Deserves to be</span>
+        <span class="hero-line-3"><em id="typingText"></em><span class="typing-cursor">|</span></span>
+      </h1>
+      <p class="hero-sub animate-sub">
         From sacred Chhab ceremonies to grand wedding mandaps — RV Creation brings the warmth of Gujarati tradition and the beauty of modern elegance to your most precious occasions.
       </p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary">Book Your Event ✦</a>
+      <div class="hero-btns animate-btns">
+        <a href="#contact" class="btn-primary btn-shine">Book Your Event ✦</a>
         <a href="#services" class="btn-secondary">Explore Services</a>
       </div>
-      <div class="hero-phones">
-        <a href="tel:+919913542816">📞 99135 42816</a>
+      <div class="hero-phones animate-phones">
+        <a href="tel:+919913542816" class="phone-link">📞 99135 42816</a>
         <span class="divider-dot">·</span>
-        <a href="tel:+919428383654">📞 94283 83654</a>
+        <a href="tel:+919428383654" class="phone-link">📞 94283 83654</a>
       </div>
     </div>
     <div class="hero-deco" aria-hidden="true">🪔</div>
@@ -90,10 +104,10 @@
   <!-- ===== ABOUT ===== -->
   <section class="about-section" id="about">
     <div class="container">
-      <div class="section-label">Our Story</div>
-      <h2 class="section-title">Rooted in <em>Rajkot</em>,<br>Crafted with Love</h2>
+      <div class="section-label reveal-up">Our Story</div>
+      <h2 class="section-title reveal-up delay-1">Rooted in <em>Rajkot</em>,<br>Crafted with Love</h2>
       <div class="about-grid">
-        <div class="about-text reveal">
+        <div class="about-text reveal-left">
           <p>
             <strong>RV Creation</strong> is a home-grown decoration service from the heart of Rajkot, Gujarat. We specialize in bringing life to your most meaningful moments — weaving tradition, color, and emotion into every décor we design.
           </p>
@@ -104,9 +118,9 @@
             અમે માત્ર સજાવટ નથી કરતા — અમે <strong>યાદો બનાવીએ છીએ.</strong><br>
             <em>(We don't just decorate — we create memories.)</em>
           </p>
-          <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:1.5rem;">Get a Free Quote</a>
+          <a href="#contact" class="btn-primary btn-shine" style="display:inline-block;margin-top:1.5rem;">Get a Free Quote</a>
         </div>
-        <div class="about-stats reveal delay-1">
+        <div class="about-stats reveal-right">
           <div class="stat-card">
             <span class="stat-num" data-target="500">0</span><span class="stat-suffix">+</span>
             <span class="stat-label">Happy Families</span>
@@ -131,50 +145,68 @@
   <!-- ===== SERVICES ===== -->
   <section class="services-section" id="services">
     <div class="container">
-      <div class="section-label light">What We Do</div>
-      <h2 class="section-title light">Our <em>Signature</em> Services</h2>
+      <div class="section-label light reveal-up">What We Do</div>
+      <h2 class="section-title light reveal-up delay-1">Our <em>Signature</em> Services</h2>
       <div class="services-grid">
 
-        <div class="service-card reveal">
-          <div class="service-icon">🌸</div>
+        <div class="service-card reveal-up">
+          <div class="service-icon-wrap">
+            <div class="service-icon">🌸</div>
+          </div>
           <h3 class="service-name">Chhab Decoration</h3>
           <div class="service-guj">છાબ શણગાર</div>
           <p class="service-desc">Beautifully decorated Chhab (ceremonial tray) arrangements with fresh flowers, traditional motifs, and premium accessories for weddings and pre-wedding rituals.</p>
+          <div class="service-card-line"></div>
         </div>
 
-        <div class="service-card reveal delay-1">
-          <div class="service-icon">🌿</div>
+        <div class="service-card reveal-up delay-1">
+          <div class="service-icon-wrap">
+            <div class="service-icon">🌿</div>
+          </div>
           <h3 class="service-name">Vana Rasam</h3>
           <div class="service-guj">વન-રસ્મ</div>
           <p class="service-desc">Elegant Vana ceremony setups with leafy greenery, floral backdrops, and traditional Gujarati elements that honor this sacred pre-wedding ritual.</p>
+          <div class="service-card-line"></div>
         </div>
 
-        <div class="service-card reveal delay-2">
-          <div class="service-icon">📜</div>
+        <div class="service-card reveal-up delay-2">
+          <div class="service-icon-wrap">
+            <div class="service-icon">📜</div>
+          </div>
           <h3 class="service-name">Lagna Lekhan</h3>
           <div class="service-guj">લગ્ન-લેખન</div>
           <p class="service-desc">Artistically decorated invitation setups and ceremonial letter presentations, making your Lagna Lekhan moment as grand as the wedding itself.</p>
+          <div class="service-card-line"></div>
         </div>
 
-        <div class="service-card reveal delay-1">
-          <div class="service-icon">🌙</div>
+        <div class="service-card reveal-up delay-1">
+          <div class="service-icon-wrap">
+            <div class="service-icon">🌙</div>
+          </div>
           <h3 class="service-name">Chhathi Decoration</h3>
           <div class="service-guj">છઠ્ઠી ઉત્સવ</div>
           <p class="service-desc">Warm, joyful décor for the Chhathi (6th day baby ceremony) — pastel themes, floral cradles, welcome gates, and personalized backdrops for the new arrival.</p>
+          <div class="service-card-line"></div>
         </div>
 
-        <div class="service-card reveal delay-2">
-          <div class="service-icon">🪷</div>
+        <div class="service-card reveal-up delay-2">
+          <div class="service-icon-wrap">
+            <div class="service-icon">🪷</div>
+          </div>
           <h3 class="service-name">Kanku Pagla</h3>
           <div class="service-guj">કંકુ-પગલા</div>
           <p class="service-desc">Sacred and stunning Kanku Pagla (Griha Pravesh footstep) décor — from threshold flower arrangements to full home entrance decoration welcoming Goddess Lakshmi.</p>
+          <div class="service-card-line"></div>
         </div>
 
-        <div class="service-card reveal delay-3">
-          <div class="service-icon">🎊</div>
+        <div class="service-card reveal-up delay-3">
+          <div class="service-icon-wrap">
+            <div class="service-icon">🎊</div>
+          </div>
           <h3 class="service-name">Traditional Gujarati Events</h3>
           <div class="service-guj">ગુજરાતી ઉત્સવ</div>
           <p class="service-desc">Full-scale decoration for Garba nights, Navratri, Diwali, housewarming, and all Gujarati cultural celebrations with authentic regional style and modern flair.</p>
+          <div class="service-card-line"></div>
         </div>
 
       </div>
@@ -182,121 +214,122 @@
   </section>
 
   <!-- ===== GALLERY ===== -->
- <section class="gallery-section" id="gallery">
-  <div class="container">
-    <div class="section-label">Our Work</div>
-    <h2 class="section-title">A Glimpse of <em>Our Creations</em></h2>
-    <p class="section-sub">
-      Each event is unique. Each decoration, a story. Follow us on Instagram to see our latest work.
-    </p>
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-label reveal-up">Our Work</div>
+      <h2 class="section-title reveal-up delay-1">A Glimpse of <em>Our Creations</em></h2>
+      <p class="section-sub reveal-up delay-2">
+        Each event is unique. Each decoration, a story. Follow us on Instagram to see our latest work.
+      </p>
 
-    <div class="gallery-grid">
+      <div class="gallery-grid">
 
-      <!-- 1 -->
-      <div class="gallery-item tall reveal">
-        <div class="gallery-box">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxt0_tDazl1_lcxHMtodmqNKo55oPB3oEoOw&s" alt="Chhab Decoration" onclick="openLightbox(this.src)"/> 
-          <div class="gallery-text">
-            <span>🌸 Chhab Setup</span>
-            <small>Traditional Decoration</small>
+        <div class="gallery-item tall reveal-up">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxt0_tDazl1_lcxHMtodmqNKo55oPB3oEoOw&s" alt="Chhab Decoration" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🌸 Chhab Setup</span>
+              <small>Traditional Decoration</small>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 2 -->
-      <div class="gallery-item reveal">
-        <div class="gallery-box">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZTMkr0zCDKn1rAEF1GutUVkxVbkhyyT6T5A&s" alt="Shri Fal Decoration" />
-          <div class="gallery-text">
-            <span>🌸 Shri Fal Decoration</span>
-            <small>Traditional Setup</small>
+        <div class="gallery-item reveal-up delay-1">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZTMkr0zCDKn1rAEF1GutUVkxVbkhyyT6T5A&s" alt="Shri Fal Decoration" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🌸 Shri Fal Decoration</span>
+              <small>Traditional Setup</small>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 3 -->
-      <div class="gallery-item reveal delay-1">
-        <div class="gallery-box">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpIHdXEGgUG7xJfykOAhCLWrZaKMkOf3TrzQ&s" alt="Vana Rasam" />
-          <div class="gallery-text">
-            <span>🌿 Vana Rasam</span>
-            <small>Gujarati Ritual Setup</small>
+        <div class="gallery-item reveal-up delay-2">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpIHdXEGgUG7xJfykOAhCLWrZaKMkOf3TrzQ&s" alt="Vana Rasam" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🌿 Vana Rasam</span>
+              <small>Gujarati Ritual Setup</small>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 4 -->
-      <div class="gallery-item wide reveal delay-2">
-        <div class="gallery-box">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx41JlRFOQ4L0XAUUs1GfI4zAMYgu6NbLpSA&s" alt="Wedding Mandap" />
-          <div class="gallery-text">
-            <span>🪷 Wedding Mandap</span>
-            <small>Grand Decoration</small>
+        <div class="gallery-item wide reveal-up delay-2">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx41JlRFOQ4L0XAUUs1GfI4zAMYgu6NbLpSA&s" alt="Wedding Mandap" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🪷 Wedding Mandap</span>
+              <small>Grand Decoration</small>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 5 -->
-      <div class="gallery-item reveal delay-2">
-        <div class="gallery-box">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHF1Xd6WNJMGw9XNXNpS0wVjmXTRcJBrV6sg&s" alt="Chhathi Decoration" />
-          <div class="gallery-text">
-            <span>🌙 Chhathi Décor</span>
-            <small>Baby Ceremony</small>
+        <div class="gallery-item reveal-up delay-2">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHF1Xd6WNJMGw9XNXNpS0wVjmXTRcJBrV6sg&s" alt="Chhathi Decoration" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🌙 Chhathi Décor</span>
+              <small>Baby Ceremony</small>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 6 -->
-      <div class="gallery-item reveal delay-3">
-        <div class="gallery-box">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhX_dqgnuXk4dG2qiTppnHaojL6UteIw2tJg&s" alt="Lagna Lekhan" />
-          <div class="gallery-text">
-            <span>📜 Lagna Lekhan</span>
-            <small>Invitation Ceremony</small>
+        <div class="gallery-item reveal-up delay-3">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhX_dqgnuXk4dG2qiTppnHaojL6UteIw2tJg&s" alt="Lagna Lekhan" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>📜 Lagna Lekhan</span>
+              <small>Invitation Ceremony</small>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 7 -->
-      <div class="gallery-item reveal delay-3">
-        <div class="gallery-box">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6aoMu93XW8CEJNaHJDxA7yoTVkdPj0TqHxQ&s" alt="Kanku Pagla" />
-          <div class="gallery-text">
-            <span>🪔 Kanku Pagla</span>
-            <small>Griha Pravesh</small>
+        <div class="gallery-item reveal-up delay-3">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6aoMu93XW8CEJNaHJDxA7yoTVkdPj0TqHxQ&s" alt="Kanku Pagla" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🪔 Kanku Pagla</span>
+              <small>Griha Pravesh</small>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 8 -->
-      <div class="gallery-item reveal delay-3">
-        <div class="gallery-box">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS31s-v8TSOyrNlxmoK62TWJDYksJfMDGR5OQ&s" alt="Chunni Rent" />
-          <div class="gallery-text">
-            <span>🪔 Chunni Rent</span>
-            <small>Decor Accessories</small>
+        <div class="gallery-item reveal-up delay-3">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS31s-v8TSOyrNlxmoK62TWJDYksJfMDGR5OQ&s" alt="Chunni Rent" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🪔 Chunni Rent</span>
+              <small>Decor Accessories</small>
+            </div>
           </div>
         </div>
+
       </div>
 
+      <div class="gallery-cta reveal-up">
+        📸 See 200+ real event photos on Instagram →
+        <a href="https://instagram.com/rv_creation__18" target="_blank" rel="noopener">@rv_creation__18</a>
+      </div>
     </div>
-
-    <div class="gallery-cta">
-      📸 See 200+ real event photos on Instagram →
-      <a href="https://instagram.com/rv_creation__18" target="_blank" rel="noopener">@rv_creation__18</a>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- ===== TESTIMONIALS ===== -->
   <section class="testimonials-section" id="testimonials">
     <div class="container">
-      <div class="section-label">What Families Say</div>
-      <h2 class="section-title">Praised by <em>Hundreds of Families</em><br>Across Rajkot</h2>
+      <div class="section-label reveal-up">What Families Say</div>
+      <h2 class="section-title reveal-up delay-1">Praised by <em>Hundreds of Families</em><br>Across Rajkot</h2>
       <div class="testi-grid">
 
-        <div class="testi-card reveal">
+        <div class="testi-card reveal-up">
+          <div class="testi-quote-icon">"</div>
           <div class="testi-stars">★★★★★</div>
           <p class="testi-text">"RV Creation ने हमारी बेटी की Chhathi को सपने जैसा बना दिया। हर detail perfect थी। The team was so professional and caring. Thank you so much!"</p>
           <div class="testi-author">
@@ -308,7 +341,8 @@
           </div>
         </div>
 
-        <div class="testi-card reveal delay-1">
+        <div class="testi-card reveal-up delay-1">
+          <div class="testi-quote-icon">"</div>
           <div class="testi-stars">★★★★★</div>
           <p class="testi-text">"અમારા લગ્ન માટે RV Creation ની સજાવટ ખૂબ જ સુંદર હતી. ફૂલ, રંગ, બધું perfect! બધા મહેમાનો ખૂબ ખુશ હતા."</p>
           <div class="testi-author">
@@ -320,7 +354,8 @@
           </div>
         </div>
 
-        <div class="testi-card reveal delay-2">
+        <div class="testi-card reveal-up delay-2">
+          <div class="testi-quote-icon">"</div>
           <div class="testi-stars">★★★★★</div>
           <p class="testi-text">"The Kanku Pagla decoration for our Griha Pravesh was absolutely divine. Flowers, diyas, everything was so traditional yet modern. Highly recommend RV Creation!"</p>
           <div class="testi-author">
@@ -339,12 +374,12 @@
   <!-- ===== CONTACT ===== -->
   <section class="contact-section" id="contact">
     <div class="container">
-      <div class="section-label">Get In Touch</div>
-      <h2 class="section-title">Book Your <em>Dream Decoration</em></h2>
-      <p class="section-sub">Ready to make your occasion unforgettable? Reach out — we'd love to be part of your celebration.</p>
+      <div class="section-label reveal-up">Get In Touch</div>
+      <h2 class="section-title reveal-up delay-1">Book Your <em>Dream Decoration</em></h2>
+      <p class="section-sub reveal-up delay-2">Ready to make your occasion unforgettable? Reach out — we'd love to be part of your celebration.</p>
       <div class="contact-grid">
 
-        <div class="contact-info reveal">
+        <div class="contact-info reveal-left">
           <div class="contact-info-item">
             <div class="contact-icon-wrap">📞</div>
             <div>
@@ -381,7 +416,7 @@
           </div>
         </div>
 
-        <div class="contact-form-card reveal delay-1">
+        <div class="contact-form-card reveal-right">
           <h3 class="form-title">Request a Quote</h3>
           <form id="bookingForm" novalidate>
             <div class="form-row">
@@ -414,7 +449,7 @@
               <label for="fmsg">Message (Optional)</label>
               <textarea id="fmsg" name="message" rows="3" placeholder="Tell us about your event, venue, preferences..."></textarea>
             </div>
-            <button type="submit" class="form-submit">Send Booking Request ✦</button>
+            <button type="submit" class="form-submit btn-shine">Send Booking Request ✦</button>
             <div id="formSuccess" class="form-success" style="display:none;">
               ✅ Thank you! We'll contact you on WhatsApp shortly.
             </div>
@@ -455,11 +490,12 @@
     </svg>
   </a>
 
-  <script src="script.js"></script>
   <!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox">
-  <span class="lightbox-close" onclick="closeLightbox()">×</span>
-  <img id="lightbox-img" src="" alt="Preview Image">
-</div>
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <img id="lightbox-img" src="" alt="Preview Image">
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
