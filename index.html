@@ -1,157 +1,510 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RV Creation – Traditional & Modern Decoration Services in Rajkot, Gujarat. Specialists in Chhab Decoration, Vana Rasam, Lagna Lekhan, Chhathi Decoration, Kanku Pagla, and all Gujarati cultural events." />
+  <meta name="keywords" content="decoration service in Rajkot, wedding decoration Gujarat, Chhathi decoration Rajkot, traditional Gujarati decoration, Mota Mava Rajkot decorator, baby ceremony decoration Gujarat, Chhab decoration, Vana Rasam, Lagna Lekhan, Kanku Pagla" />
+  <meta name="author" content="RV Creation" />
 
-  <title>RV Creation | Decoration Services in Rajkot</title>
+  <!-- Open Graph -->
+  <meta property="og:title" content="RV Creation – Decoration Services in Rajkot, Gujarat" />
+  <meta property="og:description" content="Bringing tradition & elegance to your most precious ceremonies. Book now: 99135 42816" />
+  <meta property="og:type" content="website" />
 
-  <meta name="description" content="RV Creation – Traditional & Modern Decoration Services in Rajkot. Wedding, Chhathi, Chhab, Lagna Lekhan & Gujarati Events." />
-  <meta name="keywords" content="decoration Rajkot, wedding decorator Gujarat, Chhathi decoration, Gujarati decoration service" />
+  <title>RV Creation | Decoration Services in Rajkot, Gujarat</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Hind&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Hind:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
-</head>
 
+  <!-- Local Business Schema (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "RV Creation",
+    "description": "Traditional and modern decoration services for weddings, baby ceremonies, and Gujarati cultural events in Rajkot, Gujarat.",
+    "telephone": ["+919913542816", "+919428383654"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Street No. 7, Vekariya Street, Mota Mava, Kalawad Road",
+      "addressLocality": "Rajkot",
+      "addressRegion": "Gujarat",
+      "postalCode": "360005",
+      "addressCountry": "IN"
+    },
+    "url": "https://rvcreation.in",
+    "sameAs": ["https://www.instagram.com/rv_creation__18"]
+  }
+  </script>
+</head>
 <body>
 
-<!-- NAV -->
-<nav class="navbar">
-  <div class="nav-inner">
-    <div class="nav-logo">RV Creation</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
+  <!-- ===== PARTICLE CANVAS ===== -->
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        RV Creation
+        <span>Traditional Decoration Services, Rajkot</span>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact" class="nav-cta">Book Now</a>
+      </div>
     </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-pattern"></div>
+    <div class="hero-border"></div>
+    <!-- Floating petals -->
+    <div class="petals-container" aria-hidden="true">
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge animate-badge">✦ Rajkot's Trusted Decoration Service ✦</div>
+      <h1 class="hero-title">
+        <span class="hero-line-1">Every Moment</span>
+        <span class="hero-line-2">Deserves to be</span>
+        <span class="hero-line-3"><em id="typingText"></em><span class="typing-cursor">|</span></span>
+      </h1>
+      <p class="hero-sub animate-sub">
+        From sacred Chhab ceremonies to grand wedding mandaps — RV Creation brings the warmth of Gujarati tradition and the beauty of modern elegance to your most precious occasions.
+      </p>
+      <div class="hero-btns animate-btns">
+        <a href="#contact" class="btn-primary btn-shine">Book Your Event ✦</a>
+        <a href="#services" class="btn-secondary">Explore Services</a>
+      </div>
+      <div class="hero-phones animate-phones">
+        <a href="tel:+919913542816" class="phone-link">📞 99135 42816</a>
+        <span class="divider-dot">·</span>
+        <a href="tel:+919428383654" class="phone-link">📞 94283 83654</a>
+      </div>
+    </div>
+    <div class="hero-deco" aria-hidden="true">🪔</div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="section-label reveal-up">Our Story</div>
+      <h2 class="section-title reveal-up delay-1">Rooted in <em>Rajkot</em>,<br>Crafted with Love</h2>
+      <div class="about-grid">
+        <div class="about-text reveal-left">
+          <p>
+            <strong>RV Creation</strong> is a home-grown decoration service from the heart of Rajkot, Gujarat. We specialize in bringing life to your most meaningful moments — weaving tradition, color, and emotion into every décor we design.
+          </p>
+          <p>
+            Located at <strong>Mota Mava, Kalawad Road</strong>, we serve families across Rajkot and Saurashtra who want their ceremonies to feel authentic, beautiful, and unforgettable.
+          </p>
+          <p class="gujarati-quote">
+            અમે માત્ર સજાવટ નથી કરતા — અમે <strong>યાદો બનાવીએ છીએ.</strong><br>
+            <em>(We don't just decorate — we create memories.)</em>
+          </p>
+          <a href="#contact" class="btn-primary btn-shine" style="display:inline-block;margin-top:1.5rem;">Get a Free Quote</a>
+        </div>
+        <div class="about-stats reveal-right">
+          <div class="stat-card">
+            <span class="stat-num" data-target="500">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Happy Families</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">6</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Signature Services</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">5</span><span class="stat-suffix">★</span>
+            <span class="stat-label">Client Rating</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">100</span><span class="stat-suffix">%</span>
+            <span class="stat-label">Custom Designs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-label light reveal-up">What We Do</div>
+      <h2 class="section-title light reveal-up delay-1">Our <em>Signature</em> Services</h2>
+      <div class="services-grid">
+
+        <div class="service-card reveal-up">
+          <div class="service-icon-wrap">
+            <div class="service-icon">🌸</div>
+          </div>
+          <h3 class="service-name">Chhab Decoration</h3>
+          <div class="service-guj">છાબ શણગાર</div>
+          <p class="service-desc">Beautifully decorated Chhab (ceremonial tray) arrangements with fresh flowers, traditional motifs, and premium accessories for weddings and pre-wedding rituals.</p>
+          <div class="service-card-line"></div>
+        </div>
+
+        <div class="service-card reveal-up delay-1">
+          <div class="service-icon-wrap">
+            <div class="service-icon">🌿</div>
+          </div>
+          <h3 class="service-name">Vana Rasam</h3>
+          <div class="service-guj">વન-રસ્મ</div>
+          <p class="service-desc">Elegant Vana ceremony setups with leafy greenery, floral backdrops, and traditional Gujarati elements that honor this sacred pre-wedding ritual.</p>
+          <div class="service-card-line"></div>
+        </div>
+
+        <div class="service-card reveal-up delay-2">
+          <div class="service-icon-wrap">
+            <div class="service-icon">📜</div>
+          </div>
+          <h3 class="service-name">Lagna Lekhan</h3>
+          <div class="service-guj">લગ્ન-લેખન</div>
+          <p class="service-desc">Artistically decorated invitation setups and ceremonial letter presentations, making your Lagna Lekhan moment as grand as the wedding itself.</p>
+          <div class="service-card-line"></div>
+        </div>
+
+        <div class="service-card reveal-up delay-1">
+          <div class="service-icon-wrap">
+            <div class="service-icon">🌙</div>
+          </div>
+          <h3 class="service-name">Chhathi Decoration</h3>
+          <div class="service-guj">છઠ્ઠી ઉત્સવ</div>
+          <p class="service-desc">Warm, joyful décor for the Chhathi (6th day baby ceremony) — pastel themes, floral cradles, welcome gates, and personalized backdrops for the new arrival.</p>
+          <div class="service-card-line"></div>
+        </div>
+
+        <div class="service-card reveal-up delay-2">
+          <div class="service-icon-wrap">
+            <div class="service-icon">🪷</div>
+          </div>
+          <h3 class="service-name">Kanku Pagla</h3>
+          <div class="service-guj">કંકુ-પગલા</div>
+          <p class="service-desc">Sacred and stunning Kanku Pagla (Griha Pravesh footstep) décor — from threshold flower arrangements to full home entrance decoration welcoming Goddess Lakshmi.</p>
+          <div class="service-card-line"></div>
+        </div>
+
+        <div class="service-card reveal-up delay-3">
+          <div class="service-icon-wrap">
+            <div class="service-icon">🎊</div>
+          </div>
+          <h3 class="service-name">Traditional Gujarati Events</h3>
+          <div class="service-guj">ગુજરાતી ઉત્સવ</div>
+          <p class="service-desc">Full-scale decoration for Garba nights, Navratri, Diwali, housewarming, and all Gujarati cultural celebrations with authentic regional style and modern flair.</p>
+          <div class="service-card-line"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-label reveal-up">Our Work</div>
+      <h2 class="section-title reveal-up delay-1">A Glimpse of <em>Our Creations</em></h2>
+      <p class="section-sub reveal-up delay-2">
+        Each event is unique. Each decoration, a story. Follow us on Instagram to see our latest work.
+      </p>
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item tall reveal-up">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxt0_tDazl1_lcxHMtodmqNKo55oPB3oEoOw&s" alt="Chhab Decoration" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🌸 Chhab Setup</span>
+              <small>Traditional Decoration</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal-up delay-1">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZTMkr0zCDKn1rAEF1GutUVkxVbkhyyT6T5A&s" alt="Shri Fal Decoration" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🌸 Shri Fal Decoration</span>
+              <small>Traditional Setup</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal-up delay-2">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpIHdXEGgUG7xJfykOAhCLWrZaKMkOf3TrzQ&s" alt="Vana Rasam" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🌿 Vana Rasam</span>
+              <small>Gujarati Ritual Setup</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item wide reveal-up delay-2">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx41JlRFOQ4L0XAUUs1GfI4zAMYgu6NbLpSA&s" alt="Wedding Mandap" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🪷 Wedding Mandap</span>
+              <small>Grand Decoration</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal-up delay-2">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHF1Xd6WNJMGw9XNXNpS0wVjmXTRcJBrV6sg&s" alt="Chhathi Decoration" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🌙 Chhathi Décor</span>
+              <small>Baby Ceremony</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal-up delay-3">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhX_dqgnuXk4dG2qiTppnHaojL6UteIw2tJg&s" alt="Lagna Lekhan" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>📜 Lagna Lekhan</span>
+              <small>Invitation Ceremony</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal-up delay-3">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6aoMu93XW8CEJNaHJDxA7yoTVkdPj0TqHxQ&s" alt="Kanku Pagla" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🪔 Kanku Pagla</span>
+              <small>Griha Pravesh</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal-up delay-3">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS31s-v8TSOyrNlxmoK62TWJDYksJfMDGR5OQ&s" alt="Chunni Rent" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🪔 Chunni Rent</span>
+              <small>Decor Accessories</small>
+            </div>
+          </div>
+          <div class="gallery-item reveal-up delay-3">
+          <div class="gallery-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS31s-v8TSOyrNlxmoK62TWJDYksJfMDGR5OQ&s" alt="Chunni Rent" onclick="openLightbox(this.src)"/>
+            <div class="gallery-overlay"></div>
+            <div class="gallery-text">
+              <span>🪔 baby</span>
+              <small>Decor Accessories</small>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="gallery-cta reveal-up">
+        📸 See 200+ real event photos on Instagram →
+        <a href="https://instagram.com/rv_creation__18" target="_blank" rel="noopener">@rv_creation__18</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-label reveal-up">What Families Say</div>
+      <h2 class="section-title reveal-up delay-1">Praised by <em>Hundreds of Families</em><br>Across Rajkot</h2>
+      <div class="testi-grid">
+
+        <div class="testi-card reveal-up">
+          <div class="testi-quote-icon">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"RV Creation ने हमारी बेटी की Chhathi को सपने जैसा बना दिया। हर detail perfect थी। The team was so professional and caring. Thank you so much!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-1">MR</div>
+            <div>
+              <div class="testi-name">Meena Rajpara</div>
+              <div class="testi-event">Chhathi Decoration, Rajkot</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal-up delay-1">
+          <div class="testi-quote-icon">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"અમારા લગ્ન માટે RV Creation ની સજાવટ ખૂબ જ સુંદર હતી. ફૂલ, રંગ, બધું perfect! બધા મહેમાનો ખૂબ ખુશ હતા."</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-2">DP</div>
+            <div>
+              <div class="testi-name">Dhruv Patel</div>
+              <div class="testi-event">Wedding Decoration, Rajkot</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal-up delay-2">
+          <div class="testi-quote-icon">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The Kanku Pagla decoration for our Griha Pravesh was absolutely divine. Flowers, diyas, everything was so traditional yet modern. Highly recommend RV Creation!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar av-3">SK</div>
+            <div>
+              <div class="testi-name">Shilpa Kothari</div>
+              <div class="testi-event">Kanku Pagla, Mota Mava</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-label reveal-up">Get In Touch</div>
+      <h2 class="section-title reveal-up delay-1">Book Your <em>Dream Decoration</em></h2>
+      <p class="section-sub reveal-up delay-2">Ready to make your occasion unforgettable? Reach out — we'd love to be part of your celebration.</p>
+      <div class="contact-grid">
+
+        <div class="contact-info reveal-left">
+          <div class="contact-info-item">
+            <div class="contact-icon-wrap">📞</div>
+            <div>
+              <div class="contact-info-label">Call / WhatsApp</div>
+              <div class="contact-info-val">
+                <a href="tel:+919913542816">99135 42816</a><br>
+                <a href="tel:+919428383654">94283 83654</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon-wrap">📸</div>
+            <div>
+              <div class="contact-info-label">Instagram</div>
+              <div class="contact-info-val">
+                <a href="https://instagram.com/rv_creation__18" target="_blank" rel="noopener">@rv_creation__18</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon-wrap">📍</div>
+            <div>
+              <div class="contact-info-label">Our Location</div>
+              <div class="contact-info-val address-val">
+                Street No. 7, Vekariya Street,<br>
+                Mota Mava, Kalawad Road,<br>
+                Rajkot – 360005, Gujarat
+              </div>
+            </div>
+          </div>
+          <div class="service-area-box">
+            <div class="contact-info-label">Service Area</div>
+            <p>Rajkot city &amp; surrounding areas in Saurashtra, Gujarat</p>
+          </div>
+        </div>
+
+        <div class="contact-form-card reveal-right">
+          <h3 class="form-title">Request a Quote</h3>
+          <form id="bookingForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">Your Name</label>
+                <input type="text" id="fname" name="name" placeholder="Full name" required />
+              </div>
+              <div class="form-group">
+                <label for="fphone">Phone Number</label>
+                <input type="tel" id="fphone" name="phone" placeholder="WhatsApp number" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fservice">Service Required</label>
+              <select id="fservice" name="service" required>
+                <option value="">Select a service...</option>
+                <option>Chhab Decoration</option>
+                <option>Vana Rasam</option>
+                <option>Lagna Lekhan</option>
+                <option>Chhathi Decoration</option>
+                <option>Kanku Pagla</option>
+                <option>Traditional Gujarati Event</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fdate">Event Date</label>
+              <input type="date" id="fdate" name="date" />
+            </div>
+            <div class="form-group">
+              <label for="fmsg">Message (Optional)</label>
+              <textarea id="fmsg" name="message" rows="3" placeholder="Tell us about your event, venue, preferences..."></textarea>
+            </div>
+            <button type="submit" class="form-submit btn-shine">Send Booking Request ✦</button>
+            <div id="formSuccess" class="form-success" style="display:none;">
+              ✅ Thank you! We'll contact you on WhatsApp shortly.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">RV Creation</div>
+      <p>Traditional &amp; Modern Decoration Services in Rajkot, Gujarat</p>
+      <p class="footer-keywords">Wedding Decoration · Baby Ceremony Décor · Gujarati Cultural Events · Chhab · Vana Rasam · Lagna Lekhan</p>
+      <hr class="footer-divider" />
+      <div class="footer-links">
+        <a href="tel:+919913542816">📞 99135 42816</a>
+        <span>·</span>
+        <a href="tel:+919428383654">📞 94283 83654</a>
+        <span>·</span>
+        <a href="https://instagram.com/rv_creation__18" target="_blank" rel="noopener">📸 @rv_creation__18</a>
+      </div>
+      <p class="footer-address">Street No. 7, Vekariya Street, Mota Mava, Kalawad Road, Rajkot – 360005, Gujarat</p>
+      <p class="footer-copy">© 2025 RV Creation, Rajkot. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOAT BUTTON ===== -->
+  <a href="https://wa.me/919913542816?text=Hello%20RV%20Creation!%20I%20want%20to%20enquire%20about%20your%20decoration%20services."
+     class="whatsapp-float"
+     target="_blank"
+     rel="noopener"
+     aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <img id="lightbox-img" src="" alt="Preview Image">
   </div>
-</nav>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Decoration That Creates Memories ✨</h1>
-  <p>Traditional Gujarati Decoration Services in Rajkot</p>
-  <a href="#contact" class="btn-primary">Book Now</a>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2>About Us</h2>
-  <p>
-    RV Creation is a Rajkot-based decoration service specializing in weddings,
-    baby ceremonies, and Gujarati traditions like Chhab, Vana Rasam, and Kanku Pagla.
-  </p>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <h2>Our Services</h2>
-  <ul>
-    <li>🌸 Chhab Decoration</li>
-    <li>🌿 Vana Rasam</li>
-    <li>📜 Lagna Lekhan</li>
-    <li>🌙 Chhathi Decoration</li>
-    <li>🪷 Kanku Pagla</li>
-    <li>🎊 Gujarati Events</li>
-  </ul>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <h2>Our Work</h2>
-
-  <div class="gallery">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxt0_tDazl1_lcxHMtodmqNKo55oPB3oEoOw&s"
-         alt="Traditional Chhab decoration setup in Rajkot"
-         loading="lazy">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZTMkr0zCDKn1rAEF1GutUVkxVbkhyyT6T5A&s"
-         alt="Shri Fal decoration setup for Gujarati ceremony"
-         loading="lazy">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpIHdXEGgUG7xJfykOAhCLWrZaKMkOf3TrzQ&s"
-         alt="Vana Rasam ceremony decoration"
-         loading="lazy">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx41JlRFOQ4L0XAUUs1GfI4zAMYgu6NbLpSA&s"
-         alt="Wedding mandap decoration in Rajkot"
-         loading="lazy">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHF1Xd6WNJMGw9XNXNpS0wVjmXTRcJBrV6sg&s"
-         alt="Chhathi baby ceremony decoration"
-         loading="lazy">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhX_dqgnuXk4dG2qiTppnHaojL6UteIw2tJg&s"
-         alt="Lagna Lekhan decoration ceremony"
-         loading="lazy">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6aoMu93XW8CEJNaHJDxA7yoTVkdPj0TqHxQ&s"
-         alt="Kanku Pagla Griha Pravesh decoration"
-         loading="lazy">
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact Us</h2>
-
-  <p>📞 99135 42816 / 94283 83654</p>
-
-  <!-- Google Map -->
-  <iframe
-    src="https://www.google.com/maps?q=Rajkot%20Gujarat&output=embed"
-    width="100%"
-    height="250"
-    style="border:0;"
-    loading="lazy">
-  </iframe>
-
-  <h3>Send Inquiry</h3>
-
-  <!-- WhatsApp Form -->
-  <form onsubmit="sendWhatsApp(); return false;">
-    <input type="text" id="name" placeholder="Your Name" required><br><br>
-    <input type="text" id="phone" placeholder="Phone Number" required><br><br>
-    <select id="service">
-      <option>Chhab Decoration</option>
-      <option>Wedding Decoration</option>
-      <option>Chhathi</option>
-    </select><br><br>
-
-    <button type="submit">Send on WhatsApp</button>
-  </form>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p id="footer-copy"></p>
-</footer>
-
-<!-- WHATSAPP SCRIPT -->
-<script>
-function sendWhatsApp() {
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let service = document.getElementById("service").value;
-
-  let msg = `Hello RV Creation,%0AName: ${name}%0APhone: ${phone}%0AService: ${service}`;
-  window.open(`https://wa.me/919913542816?text=${msg}`, "_blank");
-}
-
-document.getElementById("footer-copy").innerText =
-  "© " + new Date().getFullYear() + " RV Creation, Rajkot";
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
-```
+check
